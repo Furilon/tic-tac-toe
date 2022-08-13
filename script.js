@@ -57,6 +57,7 @@ const displayController = (() => {
             cell.textContent = ""
         });
         result.textContent = "";
+        move.textContent = "x"
 
         gameBoard.clearBoard();
         player.reset();
@@ -70,6 +71,7 @@ const displayController = (() => {
         console.log(sign, position, gameBoard.printBoard());
         e.target.textContent = sign;
         _makeCellInactive(e);
+        player.switchSign();
         move.textContent = player.getSign();
         
         const gameResult = gameBoard.checkResult(sign);        
@@ -81,7 +83,6 @@ const displayController = (() => {
             result.textContent = `It's a tie!`;
         } 
         
-        player.switchSign();
     }
 
     cells.forEach(cell => cell.addEventListener("click", _play));
